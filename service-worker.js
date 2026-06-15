@@ -1,4 +1,4 @@
-const CACHE_NAME = "raj-visitor-v4";
+const CACHE_NAME = "raj-visitor-v5";
 const urlsToCache = [
   "./",
   "./index.html",
@@ -23,16 +23,21 @@ self.addEventListener("install", event => {
 
 self.addEventListener("fetch", event => {
 
-  event.respondWith(
+  const url = new URL(event.request.url);
 
+  // Never cache Google Apps Script requests
+  if (
+    url.hostname.includes("script.google.com") ||
+    url.hostname.includes("googleusercontent.com")
+  ) {
+    return;
+  }
+
+  event.respondWith(
     caches.match(event.request)
       .then(response => {
-
-        return response ||
-        fetch(event.request);
-
+        return response || fetch(event.request);
       })
-
   );
 
 });
