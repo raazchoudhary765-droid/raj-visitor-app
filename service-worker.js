@@ -1,5 +1,4 @@
-const CACHE_NAME = "raj-visitor-v1";
-
+const CACHE_NAME = "raj-visitor-v3";
 const urlsToCache = [
   "./",
   "./index.html",
