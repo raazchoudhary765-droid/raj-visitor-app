@@ -3,7 +3,7 @@ let women = 0;
 let children = 0;
 
 const WEB_APP_URL =
-"https://script.google.com/macros/s/AKfycbwp7gDlNMbjeYBwTf11NAWvovy0mIgeuSwqtOixk_G_nOJWtCRUwDNzHly7F73muHd_/exec";
+"https://script.google.com/macros/s/AKfycbx3j0zY_BJQj-hunH9IbFzAzfew0iz9zRkytIre7a7DdksjhKTP-nqv6C12LEjPoNUxgg/exec";
 function addCount(type, value){
 
     if(type === "men"){
