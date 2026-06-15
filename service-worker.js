@@ -2,8 +2,10 @@ const CACHE_NAME = "raj-visitor-v3";
 const urlsToCache = [
   "./",
   "./index.html",
+  "./dashboard.html",
   "./style.css",
-  "./app.js"
+  "./app.js",
+  "./dashboard.js"
 ];
 
 self.addEventListener("install", event => {
