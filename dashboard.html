@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>RAJ Visitor Dashboard</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.dashboard-container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.dashboard-title{
+    text-align:center;
+    margin:20px 0;
+    color:#1565c0;
+}
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat-card{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.stat-card h3{
+    margin-bottom:10px;
+}
+
+.stat-value{
+    font-size:36px;
+    font-weight:bold;
+}
+
+.total{
+    color:#1565c0;
+}
+
+.men{
+    color:#1976d2;
+}
+
+.women{
+    color:#e91e63;
+}
+
+.children{
+    color:#ff9800;
+}
+
+.section-box{
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    margin-bottom:20px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th,td{
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+
+th{
+    background:#f4f6f9;
+}
+
+#backBtn{
+    width:100%;
+    padding:14px;
+    font-size:18px;
+    font-weight:bold;
+    background:#2e7d32;
+    color:white;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard-container">
+
+<h1 class="dashboard-title">
+RAJ VISITOR DASHBOARD
+</h1>
+
+<div class="card-grid">
+
+<div class="stat-card">
+<h3>Total Visitors</h3>
+<div class="stat-value total" id="totalVisitorsCard">
+0
+</div>
+</div>
+
+<div class="stat-card">
+<h3>Men</h3>
+<div class="stat-value men" id="menVisitors">
+0
+</div>
+</div>
+
+<div class="stat-card">
+<h3>Women</h3>
+<div class="stat-value women" id="womenVisitors">
+0
+</div>
+</div>
+
+<div class="stat-card">
+<h3>Children</h3>
+<div class="stat-value children" id="childrenVisitors">
+0
+</div>
+</div>
+
+</div>
+
+<div class="section-box">
+
+<h2>Peak Statistics</h2>
+
+<br>
+
+<p>
+Peak Hour :
+<span id="peakHour">
+Loading...
+</span>
+</p>
+
+<br>
+
+<p>
+Peak Day :
+<span id="peakDay">
+Loading...
+</span>
+</p>
+
+</div>
+
+<div class="section-box">
+
+<h2>Recent Slot Summary</h2>
+
+<br>
+
+<table>
+
+<thead>
+<tr>
+<th>Slot</th>
+<th>Men</th>
+<th>Women</th>
+<th>Children</th>
+<th>Total</th>
+</tr>
+</thead>
+
+<tbody id="recentTable">
+
+<tr>
+<td colspan="5">
+No Data Yet
+</td>
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+<button id="backBtn"
+onclick="window.location.href='index.html'">
+
+BACK TO COUNTER
+
+</button>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>
