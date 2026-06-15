@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAJ Visitor App v2.0</title>
+
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
+</head>
+<body>
+
+<div class="container">
+
+    <h1>RAJ VISITOR APP</h1>
+
+    <div class="slot-box">
+        Current Slot:
+        <span id="currentSlot">09-10</span>
+    </div>
+
+    <!-- MEN -->
+    <div class="counter-card">
+        <h2>MEN COUNT</h2>
+        <div id="menCount" class="count">0</div>
+
+        <div class="btn-grid">
+            <button onclick="addCount('men',1)">+1</button>
+            <button onclick="addCount('men',5)">+5</button>
+            <button onclick="addCount('men',10)">+10</button>
+            <button onclick="addCount('men',25)">+25</button>
+            <button onclick="addCount('men',50)">+50</button>
+            <button onclick="addCount('men',100)">+100</button>
+        </div>
+    </div>
+
+    <!-- WOMEN -->
+    <div class="counter-card">
+        <h2>WOMEN COUNT</h2>
+        <div id="womenCount" class="count">0</div>
+
+        <div class="btn-grid">
+            <button onclick="addCount('women',1)">+1</button>
+            <button onclick="addCount('women',5)">+5</button>
+            <button onclick="addCount('women',10)">+10</button>
+            <button onclick="addCount('women',25)">+25</button>
+            <button onclick="addCount('women',50)">+50</button>
+            <button onclick="addCount('women',100)">+100</button>
+        </div>
+    </div>
+
+    <!-- CHILDREN -->
+    <div class="counter-card">
+        <h2>CHILDREN COUNT</h2>
+        <div id="childrenCount" class="count">0</div>
+
+        <div class="btn-grid">
+            <button onclick="addCount('children',1)">+1</button>
+            <button onclick="addCount('children',5)">+5</button>
+            <button onclick="addCount('children',10)">+10</button>
+            <button onclick="addCount('children',25)">+25</button>
+            <button onclick="addCount('children',50)">+50</button>
+            <button onclick="addCount('children',100)">+100</button>
+        </div>
+    </div>
+
+    <div class="total-box">
+        TOTAL VISITORS
+        <div id="totalVisitors">0</div>
+    </div>
+
+    <button id="saveBtn" onclick="saveSlot()">
+        SAVE SLOT
+    </button>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
