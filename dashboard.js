@@ -1,18 +1,68 @@
-document.addEventListener("DOMContentLoaded", () => {
+const API_URL =
+"https://script.google.com/macros/s/AKfycbx3j0zY_BJQj-hunH9IbFzAzfew0iz9zRkytIre7a7DdksjhKTP-nqv6C12LEjPoNUxgg/exec?action=summary";
 
-    // Demo Values
-    document.getElementById("totalVisitorsCard").innerText = 0;
+document.addEventListener("DOMContentLoaded", loadDashboard);
 
-    document.getElementById("menVisitors").innerText = 0;
+async function loadDashboard() {
 
-    document.getElementById("womenVisitors").innerText = 0;
+    try {
 
-    document.getElementById("childrenVisitors").innerText = 0;
+        const response = await fetch(API_URL);
+        const data = await response.json();
 
-    document.getElementById("peakHour").innerText =
-    "No Data";
+        document.getElementById("totalVisitorsCard").innerText =
+            data.totalVisitors || 0;
 
-    document.getElementById("peakDay").innerText =
-    "No Data";
+        document.getElementById("menVisitors").innerText =
+            data.men || 0;
 
-});
+        document.getElementById("womenVisitors").innerText =
+            data.women || 0;
+
+        document.getElementById("childrenVisitors").innerText =
+            data.children || 0;
+
+        document.getElementById("peakHour").innerText =
+            data.peakHour || "No Data";
+
+        document.getElementById("peakDay").innerText =
+            data.peakDay || "No Data";
+
+        const table =
+            document.getElementById("recentTable");
+
+        table.innerHTML = "";
+
+        if (data.recentSlots && data.recentSlots.length > 0) {
+
+            data.recentSlots.forEach(row => {
+
+                table.innerHTML += `
+                <tr>
+                    <td>${row.slot}</td>
+                    <td>${row.men}</td>
+                    <td>${row.women}</td>
+                    <td>${row.children}</td>
+                    <td>${row.total}</td>
+                </tr>
+                `;
+
+            });
+
+        } else {
+
+            table.innerHTML =
+            `<tr><td colspan="5">No Data Yet</td></tr>`;
+
+        }
+
+    } catch (error) {
+
+        console.error(error);
+
+        document.getElementById("peakHour").innerText =
+            "API Error";
+
+    }
+
+}
