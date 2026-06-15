@@ -108,3 +108,10 @@ function saveSlot(){
 if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("service-worker.js");
 }
+function openDashboard(){
+
+    window.location.href =
+    "dashboard.html";
+
+}
+
