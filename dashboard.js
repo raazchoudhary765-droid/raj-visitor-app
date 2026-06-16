@@ -33,32 +33,27 @@ async function loadDashboard() {
 
         table.innerHTML = "";
 
-        if (data.recentSlots && data.recentSlots.length > 0) {
+        data.recentSlots.forEach(row => {
 
-            data.recentSlots.forEach(row => {
+            table.innerHTML += `
+            <tr>
+                <td>${row.slot}</td>
+                <td>${row.men}</td>
+                <td>${row.women}</td>
+                <td>${row.children}</td>
+                <td>${row.total}</td>
+            </tr>
+            `;
+        });
 
-                table.innerHTML += `
-                <tr>
-                    <td>${row.slot}</td>
-                    <td>${row.men}</td>
-                    <td>${row.women}</td>
-                    <td>${row.children}</td>
-                    <td>${row.total}</td>
-                </tr>
-                `;
-            });
+    }
 
-        } else {
-
-            table.innerHTML =
-            `<tr><td colspan="5">No Data Yet</td></tr>`;
-        }
-
-    } catch (error) {
+    catch(error){
 
         console.error(error);
 
-        document.getElementById("peakHour").innerText =
-        "API Error";
+        document.getElementById("peakHour")
+        .innerText = "API Error";
     }
+
 }
