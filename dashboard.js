@@ -1,5 +1,6 @@
 const API_URL =
-"https://script.google.com/macros/s/AKfycbwp7gD1NMbjeYBwTf11NAWvovy0mIgeuSwqtOixk_G_nOJWtCRUwDNzHly7F73muHd_/exec?action=summary";
+"https://script.google.com/macros/s/AKfycbx3j0zY_BJQj-hunH9IbFzAzfew0iz9zRkytIre7a7DdksjhKTP-nqv6C12LEjPoNUxgg/exec?action=summary";
+
 document.addEventListener("DOMContentLoaded", loadDashboard);
 
 async function loadDashboard() {
