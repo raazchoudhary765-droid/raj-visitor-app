@@ -28,27 +28,28 @@ async function loadDashboard() {
         document.getElementById("peakDay").innerText =
             data.peakDay || "No Data";
 
-        const table =
-            document.getElementById("recentTable");
+        const table = document.getElementById("recentTable");
 
         table.innerHTML = "";
 
-        data.recentSlots.forEach(row => {
+        if (data.recentSlots) {
 
-            table.innerHTML += `
-            <tr>
-                <td>${row.slot}</td>
-                <td>${row.men}</td>
-                <td>${row.women}</td>
-                <td>${row.children}</td>
-                <td>${row.total}</td>
-            </tr>
-            `;
-        });
+            data.recentSlots.forEach(row => {
 
-    }
+                table.innerHTML += `
+                <tr>
+                    <td>${row.slot}</td>
+                    <td>${row.men}</td>
+                    <td>${row.women}</td>
+                    <td>${row.children}</td>
+                    <td>${row.total}</td>
+                </tr>
+                `;
+            });
 
-    catch(error){
+        }
+
+    } catch(error){
 
         console.error(error);
 
