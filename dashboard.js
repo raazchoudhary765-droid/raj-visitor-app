@@ -1,75 +1,59 @@
 const API_URL =
-"https://script.google.com/macros/s/AKfycbx3j0zY_BJQj-hunH9IbFzAzfew0iz9zRkytIre7a7DdksjhKTP-nqv6C12LEjPoNUxgg/exec?action=summary";
+"https://script.google.com/macros/s/AKfycby4EO-QruH1ohw-H0NKAwcu2O_G-HdX9Q2-Scwpc9jWgRTvCnWiiXygZsmZd-Fw0kCreg/exec?action=summary";
 
 document.addEventListener("DOMContentLoaded", loadDashboard);
 
 async function loadDashboard() {
 
-    try {
+  try {
 
-        const response = await fetch(API_URL);
+    const response = await fetch(API_URL);
 
-        const data = await response.json();
+    const data = await response.json();
 
-        console.log(data);
+    console.log(data);
 
-        document.getElementById("totalVisitorsCard").innerText =
-        data.totalVisitors || 0;
+    document.getElementById("totalVisitorsCard").innerText =
+      data.grandTotal || 0;
 
-        document.getElementById("menVisitors").innerText =
-        data.men || 0;
+    document.getElementById("menVisitors").innerText =
+      data.menTotal || 0;
 
-        document.getElementById("womenVisitors").innerText =
-        data.women || 0;
+    document.getElementById("womenVisitors").innerText =
+      data.womenTotal || 0;
 
-        document.getElementById("childrenVisitors").innerText =
-        data.children || 0;
+    document.getElementById("childrenVisitors").innerText =
+      data.childrenTotal || 0;
 
-        document.getElementById("peakHour").innerText =
-        data.peakHour || "No Data";
+    document.getElementById("peakHour").innerText =
+      "Coming Soon";
 
-        document.getElementById("peakDay").innerText =
-        data.peakDay || "No Data";
+    document.getElementById("peakDay").innerText =
+      "Coming Soon";
 
-        const table =
-        document.getElementById("recentTable");
+    document.getElementById("recentTable").innerHTML = `
+      <tr>
+        <td>10-11</td>
+        <td>${data.menTotal}</td>
+        <td>${data.womenTotal}</td>
+        <td>${data.childrenTotal}</td>
+        <td>${data.grandTotal}</td>
+      </tr>
+    `;
 
-        table.innerHTML = "";
+  }
 
-        if(data.recentSlots && data.recentSlots.length > 0){
+  catch(error){
 
-            data.recentSlots.forEach(row => {
+    console.error(error);
 
-                table.innerHTML += `
-                <tr>
-                    <td>${row.slot}</td>
-                    <td>${row.men}</td>
-                    <td>${row.women}</td>
-                    <td>${row.children}</td>
-                    <td>${row.total}</td>
-                </tr>
-                `;
+    document.getElementById("peakHour").innerText =
+    "API Error";
 
-            });
-
-        }
-
-        else{
-
-            table.innerHTML =
-            `<tr><td colspan="5">No Data Yet</td></tr>`;
-
-        }
-
-    }
-
-    catch(error){
-
-        console.error(error);
-
-        document.getElementById("peakHour")
-        .innerText = "API Error";
-
-    }
+  }
 
 }
+
+loadDashboard();
+
+setInterval(loadDashboard,30000);
