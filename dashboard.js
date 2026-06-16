@@ -8,31 +8,35 @@ async function loadDashboard() {
     try {
 
         const response = await fetch(API_URL);
+
         const data = await response.json();
 
+        console.log(data);
+
         document.getElementById("totalVisitorsCard").innerText =
-            data.totalVisitors || 0;
+        data.totalVisitors || 0;
 
         document.getElementById("menVisitors").innerText =
-            data.men || 0;
+        data.men || 0;
 
         document.getElementById("womenVisitors").innerText =
-            data.women || 0;
+        data.women || 0;
 
         document.getElementById("childrenVisitors").innerText =
-            data.children || 0;
+        data.children || 0;
 
         document.getElementById("peakHour").innerText =
-            data.peakHour || "No Data";
+        data.peakHour || "No Data";
 
         document.getElementById("peakDay").innerText =
-            data.peakDay || "No Data";
+        data.peakDay || "No Data";
 
-        const table = document.getElementById("recentTable");
+        const table =
+        document.getElementById("recentTable");
 
         table.innerHTML = "";
 
-        if (data.recentSlots) {
+        if(data.recentSlots && data.recentSlots.length > 0){
 
             data.recentSlots.forEach(row => {
 
@@ -45,16 +49,27 @@ async function loadDashboard() {
                     <td>${row.total}</td>
                 </tr>
                 `;
+
             });
 
         }
 
-    } catch(error){
+        else{
+
+            table.innerHTML =
+            `<tr><td colspan="5">No Data Yet</td></tr>`;
+
+        }
+
+    }
+
+    catch(error){
 
         console.error(error);
 
         document.getElementById("peakHour")
         .innerText = "API Error";
+
     }
 
 }
