@@ -46,14 +46,12 @@ async function loadDashboard() {
                     <td>${row.total}</td>
                 </tr>
                 `;
-
             });
 
         } else {
 
             table.innerHTML =
             `<tr><td colspan="5">No Data Yet</td></tr>`;
-
         }
 
     } catch (error) {
@@ -61,8 +59,6 @@ async function loadDashboard() {
         console.error(error);
 
         document.getElementById("peakHour").innerText =
-            "API Error";
-
+        "API Error";
     }
-
 }
